@@ -1,50 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>StarterRubyRails</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <%= favicon_link_tag %>
+  <%= favicon_link_tag 'apple-touch-icon.png', :rel => 'apple-touch-icon' %>
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-152x152.png" />
+
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div data-role="page">
 
-<header>
-  <% if privileged_access? %>
-    <div id="toolbar">
-      <form method="GET">
-        <label for="releaseSelector">See this website: </label>
-        <select id="releaseSelector" name="ref" onchange="this.form.submit()">
-          <% if !api.refs.map{|_,r| r.ref }.include?(current_ref) %>
-            <option>?</option>
-          <% end %>
-          <option value="" <% if current_ref == master_ref %>selected="selected"<% end %>>As currently seen by guest visitors</option>
-          <optgroup label="Or preview the website in a future release:">
-            <% api.refs.reject{|_,r| r.master? }.each do |_, ref| %>
-              <option value="<%= ref.ref %>" <% if current_ref == ref.ref %>selected="selected"<% end %>>
-                As <%= ref.label %> <%= ref.scheduled_at && ref.scheduled_at.strftime("%Y-%m-%d") %>
-              </option>
-            <% end %>
-          </optgroup>
-        </select>
-      </form>
+    <div data-role="header" data-theme="b">
+      <h1>John Colins - <%= @document.first_title %></h1>
     </div>
-    <hr />
-  <% end %>
-  <a href="/">
-    <h1>Your prismic.io project</h1>
-  </a>
-</header>
 
-<%= yield %>
+    <!--
+      <% if privileged_access? %>
+        <form method="GET">
+          <label for="releaseSelector">See this website: </label>
+          <select id="releaseSelector" name="ref" onchange="this.form.submit()">
+            <% if !api.refs.map{|_,r| r.ref }.include?(current_ref) %>
+              <option>?</option>
+            <% end %>
+            <option value="" <% if current_ref == master_ref %>selected="selected"<% end %>>As currently seen by guest visitors</option>
+            <optgroup label="Or preview the website in a future release:">
+              <% api.refs.reject{|_,r| r.master? }.each do |_, ref| %>
+                <option value="<%= ref.ref %>" <% if current_ref == ref.ref %>selected="selected"<% end %>>
+                  As <%= ref.label %> <%= ref.scheduled_at && ref.scheduled_at.strftime("%Y-%m-%d") %>
+                </option>
+              <% end %>
+            </optgroup>
+          </select>
+        </form>
+      <% end %>
+    -->
 
-<footer>
-  <hr />
-  <% if connected? %>
-    <%= link_to signout_path do %>Sign out<% end %>
-  <% else %>
-    <%= link_to signin_path do %>Sign in to preview changes<% end %>
-  <% end %>
-</footer>
+    <div data-role="content">
+      <%= yield %>
+    </div>
+
+    <div data-role="footer" data-position="fixed" data-theme="c">
+      <div data-role="navbar">
+        <ul>
+          <li>
+            <a href="/" data-icon="home" class="ui-btn-active" data-theme="b">Home</a>
+          </li>
+          <li>
+            <a href="/gallery" data-icon="grid">Gallery</a>
+          </li>
+          <li>
+            <a href="/menu" data-icon="star">Our menu</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+<!--     <div data-role="footer">
+      <% if connected? %>
+        <%= link_to signout_path do %>Sign out<% end %>
+      <% else %>
+        <%= link_to signin_path do %>Sign in to preview changes<% end %>
+      <% end %>
+    </div> -->
 
 </body>
 </html>

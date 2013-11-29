@@ -12,7 +12,12 @@ module PrismicHelper
   end
 
   def link_resolver(ref)
-    Prismic::LinkResolver.new(ref){|doc| document_path(id: doc.id, slug: doc.slug) }
+    Prismic::LinkResolver.new(ref) do |doc|
+      case doc.link_type
+      when "article"
+        root_path if doc.id == api.bookmark("home")
+      end
+    end
   end
 
   def privileged_access?

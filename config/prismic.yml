@@ -1,7 +1,7 @@
 ---
-url: https://lesbonneschoses.prismic.io/api
+url: https://johncolinssf.prismic.io/api
 # If specified this token is used for all "guest" requests
 # token: ""
 # OAuth2 configuration
-# client_id: ""
-# client_secret: ""
+client_id: "UpkL3wEAAII59lDc"
+client_secret: "d926d832c748d0235b61bbf311e601f9"
