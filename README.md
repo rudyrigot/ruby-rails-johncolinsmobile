@@ -1,32 +1,18 @@
-## Prismic.io starter for Ruby on Rails
+## Mobile web app for John Colins bar in SF
 
-This is a blank Rails project that will connect to any [prismic.io](https://prismic.io)
-repository. It uses the prismic.io Ruby developement kit, and provides few helpers
-to use it with Rails.
+This web app was made as a mock demo to introduce the exciting possibilities of [prismic.io](https://prismic.io) in the native mobile web environment.
 
-### How to start?
+This is a mock example, made as a webapp; it was made with Rails, JQuery Mobile, and [JQuery Mobile Flat UI Theme](http://ququplay.github.io/jquery-mobile-flat-ui-theme/).
 
-If you haven't yet, install the latest versions of [Ruby](https://www.ruby-lang.org/en/downloads/), [Rails](http://rubyonrails.org/download) and [RubyGems](http://rubygems.org/pages/download).
+It was started from the [prismic.io rails starter kit](https://github.com/prismicio/ruby-rails-starter).
 
-After forking and cloning the starter kit, it is immediately operational, so you can launch your `rails server` command. You may have to update your gems by running `bundle install`, but Rails will tell you about it if you must.
+### What should I use this for?
 
-The output of your `rails server` command tells you which URL to visit on your browser to see your brand new prismic.io Rails application.
+For nothing. Seriously.
 
-### Configuring
+This was made for a single demo given on Monday December 2nd 2013 in John Colins bar, for the [DrinksOnTap meetup](http://www.meetup.com/DrinksOnTapSF/).
 
-By default, the starter kit uses the public API of the "Les Bonnes Choses" repository; its endpoint is `https://lesbonneschoses.prismic.io/api`. You may want to start by editing the `config/prismic.yml` file to make your Rails application points to your prismic.io repository.
-
-To get the OAuth configuration working, go to the Applications panel in your repository settings, and create an OAuth application to allow interactive sign-in. Just create a new application, fill the application name and the callback URL (localhost URLs are always authorized, so at development time you can omit to fill the Callback URL field), and copy/paste the clientId & clientSecret tokens into the `config/prismic.yml` file.
-
-### Starter Kit Documentation
-
-You should check out [the "Kits and helpers" section of our API documentation](https://developers.prismic.io/documentation/UjBe8bGIJ3EKtgBZ/api-documentation#kits-and-helpers), which sets general information about how our kits work, and [the "Kit documentation" of the Ruby development kit](https://github.com/prismicio/ruby-kit) for specifics about how the gem works.
-
-Below are some extra helpers included in this starter kit to make your life easier.
- * A `PrismicService` class is included, which comes with a few interesting methods, including `PrismicService.get_document(id,api,ref)` to make a quicker query from an ID.
- * the `ApplicationController` as it is out of the box initializes `@ref` as an instance variable.
- * you can also use the api method in the `ApplicationController` as it is out of the box, which initializes it if it wasn't initialized yet.
- * A `PrismicHelper` module is also provided, that provides several interesting methods, including a `link_resolver` method that you can use in your `as_html` calls out of the box, and that you can fine-tune later, as you get more serious about your URL strategy.
+It follows some best practice, but for the sake of the demo, bypasses some. It isn't even really an interesting example content-wise. Also, it was formatted to be hosted by Heroku. If you want to see some code made with best practice and great examples, you should check out [the prismic.io developer portal's webpage dedicated to Rails](https://developers.prismic.io/technologies/UjBh6MuvzeMJvE4m/ruby).
 
 ### Licence
 
