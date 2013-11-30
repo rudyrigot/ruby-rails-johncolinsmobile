@@ -10,3 +10,20 @@
  *
  *= require_tree .
  */
+
+.ui-collapsible-content {
+	background: white !important;
+}
+.ui-collapsible-content p {
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+}
+
+#gallery img {
+	max-width: 100%;
+}
+
+#back {
+	font-weight: normal;
+	margin-top: 15px;
+}

@@ -16,6 +16,12 @@ module PrismicHelper
       case doc.link_type
       when "article"
         root_path if doc.id == api.bookmark("home")
+      when "argument"
+        root_path + '#' + doc.id
+      when "photogallery"
+        gallery_path
+      when "menupage"
+        menu_path + '#' + doc.id
       end
     end
   end

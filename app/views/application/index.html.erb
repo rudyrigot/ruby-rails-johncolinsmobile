@@ -1,1 +1,19 @@
-<%= @document.fragments['body'].as_html(link_resolver(@ref)).html_safe %>
+<div data-role="collapsible-set" data-inset="false" data-theme="c"  data-content-theme="c">
+
+  <% @arguments.each do |argument| %>
+
+    <div id="<%= argument.id %>" data-role="collapsible" data-theme="c"  data-content-theme="c" style="clear:right">
+      <h3 data-theme="c"><%= argument.fragments['title'].blocks[0].text %></h3>
+      <img src="<%= argument.fragments['image'].get_view('largeicon').url %>" style="float:right" width="70" height="70">
+      <%= argument.fragments['body'].as_html(link_resolver(@ref)).html_safe %>
+    </div>
+
+  <% end %>
+
+</div>
+
+<div id="history" style="clear:right">
+
+  <%= @document.fragments['body'].as_html(link_resolver(@ref)).html_safe %>
+
+</div>

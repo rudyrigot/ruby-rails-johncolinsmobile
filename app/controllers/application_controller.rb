@@ -3,10 +3,21 @@ class ApplicationController < ActionController::Base
   before_action :set_ref
 
   def index
-      @document = PrismicService.get_document(api.bookmark("home"), api, @ref)
+    @document = PrismicService.get_document(api.bookmark("home"), api, @ref)
+    @arguments = api.create_search_form('arguments').submit(@ref)
   end
 
+  def gallery
+    @document = PrismicService.get_document(api.bookmark("gallery"), api, @ref)
+  end
 
+  def photo
+    @photo = PrismicService.get_document(api.bookmark("gallery"), api, @ref).fragments['photo'].fragments[params[:id].to_i]
+  end
+
+  def menu
+    @menupages = api.create_search_form('menupages').submit(@ref)
+  end
 
   def get_callback_url
     callback_url(redirect_uri: request.env['referer'])

@@ -1,0 +1,15 @@
+<%= @document.fragments['title'].as_html(link_resolver(@ref)).html_safe %>
+
+<div id="gallery">
+
+	<% @document.fragments['photo'].fragments.each_with_index do |photo, i| %>
+
+		<a href="/gallery/<%= i %>/" data-transition="slide">
+
+			<%= photo.get_view('smallsquare').as_html(link_resolver(@ref)).html_safe %>
+
+		</a>
+
+	<% end %>
+
+</div>
