@@ -27,3 +27,7 @@
 	font-weight: normal;
 	margin-top: 15px;
 }
+
+.menupage img {
+	max-width: 100%;
+}

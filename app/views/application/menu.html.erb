@@ -1,0 +1,7 @@
+<% @menupages.each do |menupage| %>
+	<% ['left', 'right'].each do |side| %>
+		<p class="menupage">
+			<%= menupage.fragments['image'].get_view(side).as_html(link_resolver(@ref)).html_safe %>
+		</p>
+	<% end %>
+<% end %>
