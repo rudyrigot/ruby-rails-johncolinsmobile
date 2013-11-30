@@ -17,3 +17,14 @@
   <%= @document.fragments['body'].as_html(link_resolver(@ref)).html_safe %>
 
 </div>
+
+
+<!--
+<div>
+    <% if connected? %>
+        <%= link_to signout_path do %>Sign out<% end %>
+    <% else %>
+        <%= link_to signin_path do %>Sign in to preview changes<% end %>
+    <% end %>
+</div>
+-->

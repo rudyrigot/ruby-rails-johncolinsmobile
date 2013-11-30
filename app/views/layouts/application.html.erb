@@ -32,26 +32,23 @@
       <h1>John Colins</h1>
     </div>
 
-    <!--
-      <% if privileged_access? %>
-        <form method="GET">
-          <label for="releaseSelector">See this website: </label>
-          <select id="releaseSelector" name="ref" onchange="this.form.submit()">
-            <% if !api.refs.map{|_,r| r.ref }.include?(current_ref) %>
-              <option>?</option>
+    <% if privileged_access? %>
+      <form method="GET">
+        <select id="releaseSelector" name="ref" onchange="this.form.submit()" data-theme="d">
+          <% if !api.refs.map{|_,r| r.ref }.include?(current_ref) %>
+            <option>?</option>
+          <% end %>
+          <option value="" <% if current_ref == master_ref %>selected="selected"<% end %>>See as currently seen by guest visitors</option>
+          <optgroup label="Or preview in a future release:">
+            <% api.refs.reject{|_,r| r.master? }.each do |_, ref| %>
+              <option value="<%= ref.ref %>" <% if current_ref == ref.ref %>selected="selected"<% end %>>
+                As <%= ref.label %> <%= ref.scheduled_at && ref.scheduled_at.strftime("%Y-%m-%d") %>
+              </option>
             <% end %>
-            <option value="" <% if current_ref == master_ref %>selected="selected"<% end %>>As currently seen by guest visitors</option>
-            <optgroup label="Or preview the website in a future release:">
-              <% api.refs.reject{|_,r| r.master? }.each do |_, ref| %>
-                <option value="<%= ref.ref %>" <% if current_ref == ref.ref %>selected="selected"<% end %>>
-                  As <%= ref.label %> <%= ref.scheduled_at && ref.scheduled_at.strftime("%Y-%m-%d") %>
-                </option>
-              <% end %>
-            </optgroup>
-          </select>
-        </form>
-      <% end %>
-    -->
+          </optgroup>
+        </select>
+      </form>
+    <% end %>
 
     <div data-role="content">
       <%= yield %>
@@ -79,14 +76,6 @@
       </div>
 
     </div>
-
-<!--     <div data-role="footer">
-      <% if connected? %>
-        <%= link_to signout_path do %>Sign out<% end %>
-      <% else %>
-        <%= link_to signin_path do %>Sign in to preview changes<% end %>
-      <% end %>
-    </div> -->
 
 </body>
 </html>
